@@ -14,7 +14,7 @@ namespace SunPerfume.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public int ProductId { get; set; }
+        public string ProductId { get; set; }
         [ForeignKey("ProductId")]
         [ValidateNever]
         public Product Product { get; set; }

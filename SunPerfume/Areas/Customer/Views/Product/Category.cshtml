@@ -29,8 +29,8 @@
                         else
                         {
                             <li>
-                                <a asp-action="Category" asp-route-cateId="@Model.Category.Id">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>@Model.Category.Id</a>
+                                <a asp-action="Category" asp-route-cateId="@Model.Category.CategoryId">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>@Model.Category.CategoryId</a>
                             </li>
                         }
 
@@ -38,11 +38,8 @@
                 </ul>
             </div>
 
-
-            @{
-                Html.RenderPartial("_Category");
-            }
-
+            <!-- Section Filter -->
+            @await Component.InvokeAsync("FilterSidebar")
             <!-- Main Content -->
 
             <div class="main_content">
@@ -97,23 +94,23 @@
                             <div class="product-grid">
 
                                 <!-- Product 3 -->
-                                @foreach (var item in Model.Product)
+                                @foreach (var item in Model.ProductList)
                                 {
-                                    <div class="product-item @item.Id">
+                                    <div class="product-item @item.ProductId">
                                         <div class="product product_filter">
                                             <div class="product_image">
-                                                <a href="/Product/ProDetail/@item.Id">
+                                                <a href="/Product/ProDetail/@item.ProductId">
                                                     <img src="~/images/@item.ImageUrl" alt="">
                                                 </a>
 
                                             </div>
                                             <div class="favorite"></div>
                                             <div class="product_info">
-                                                <h6 class="product_name"><a href="/Product/ProDetail/@item.Id">@item.Name</a></h6>
+                                                <h6 class="product_name"><a href="/Product/ProDetail/@item.ProductId">@item.Name</a></h6>
                                                 <div class="product_price">@string.Format("{0:#,##0}", item.Price) đ</div>
                                             </div>
                                         </div>
-                                        <div class="red_button add_to_cart_button"><a href="/GioHang/AddtoCart/@item.Id">Mua hàng</a></div>
+                                        <div class="red_button add_to_cart_button"><a href="/GioHang/AddtoCart/@item.ProductId">Mua hàng</a></div>
                                     </div>
                                 }
 

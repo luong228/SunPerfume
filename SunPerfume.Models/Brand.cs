@@ -10,7 +10,8 @@ namespace SunPerfume.Models
     public class Brand
     {
         [Key]
-        public int Id { get; set; }
+        [MaxLength(5)]
+        public string BrandId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

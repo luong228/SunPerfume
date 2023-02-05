@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SunPerfume.DataAccess.Data;
 
@@ -11,9 +12,11 @@ using SunPerfume.DataAccess.Data;
 namespace SunPerfume.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230205130150_AddQuanityColumnToProduct")]
+    partial class AddQuanityColumnToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -222,9 +225,11 @@ namespace SunPerfume.DataAccess.Migrations
 
             modelBuilder.Entity("SunPerfume.Models.Brand", b =>
                 {
-                    b.Property<string>("BrandId")
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -234,7 +239,7 @@ namespace SunPerfume.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BrandId");
+                    b.HasKey("Id");
 
                     b.ToTable("Brands");
                 });
@@ -250,9 +255,8 @@ namespace SunPerfume.DataAccess.Migrations
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProductId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -263,9 +267,11 @@ namespace SunPerfume.DataAccess.Migrations
 
             modelBuilder.Entity("SunPerfume.Models.Category", b =>
                 {
-                    b.Property<string>("CategoryId")
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
@@ -279,24 +285,24 @@ namespace SunPerfume.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("SunPerfume.Models.Product", b =>
                 {
-                    b.Property<string>("ProductId")
-                        .HasMaxLength(5)
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Property<string>("BrandId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CategoryId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(5)");
+                    b.Property<int>("BrandId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -316,7 +322,7 @@ namespace SunPerfume.DataAccess.Migrations
                     b.Property<double>("Quantity")
                         .HasColumnType("float");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
                     b.HasIndex("BrandId");
 

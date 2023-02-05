@@ -8,7 +8,7 @@ namespace SunPerfume.Models.ViewModels
 {
     public class ProductVM
     {
-        public IEnumerable<Product> Product { get; set; }
+        public IEnumerable<Product> ProductList { get; set; }
         public Category Category { get; set; }
         public Brand Brand { get; set; }
 

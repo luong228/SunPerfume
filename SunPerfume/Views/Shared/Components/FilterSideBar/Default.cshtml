@@ -1,0 +1,97 @@
+﻿@model SunPerfume.Models.ViewModels.BrandCategoryVM
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="sidebar_section">
+        <div class="sidebar_title">
+            <h5>Product Category</h5>
+        </div>
+        <ul class="sidebar_categories">
+            <li>
+                <a asp-area="Customer" asp-controller="Product" asp-action="Category">Tất cả sản phẩm</a>
+             </li>
+
+            @foreach (var item in Model.CategoryList)
+            {
+                if (item.CategoryId == null)
+                {
+                    <li class="active"><a 
+                        asp-area="Customer" asp-controller="Product" 
+                        asp-action="Category" 
+                        asp-route-cateId="@item.CategoryId"
+                    >
+                        <span>
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        </span>@item.Name</a>
+                    </li>
+                }
+                else
+                {
+                    <li><a 
+                        asp-area="Customer" asp-controller="Product" 
+                        asp-action="Category" 
+                        asp-route-cateId="@item.CategoryId"
+                    >
+                        <span>
+                            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        </span>@item.Name</a>
+                    </li>
+                }
+
+            }
+
+
+        </ul>
+    </div>
+
+
+
+
+    <!-- Thuong hieu -->
+    <div class="sidebar_section">
+        <div class="sidebar_title">
+            <h5>Product brands</h5>
+        </div>
+        <ul class="sidebar_categories">
+            @foreach (var item in Model.BrandList)
+            {
+                if (item.BrandId == null)
+                {
+                    <li class="active"><a asp-area="Customer" asp-controller="Product" asp-action="Brand">
+                        <span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>
+                        @item.Name
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a 
+                        asp-area="Customer" 
+                        asp-controller="Product" 
+                        asp-action="Brand"
+                        asp-route-brandId="@item.BrandId"
+                        >
+                       @item.Name
+                        </a>
+                    </li>
+                }
+            }
+
+            @*<li><i class="fa fa-square-o" aria-hidden="true"></i><span>Aqua Di Gio</span></li>
+            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>VERSACE</span></li>
+            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>Amouage</span></li>
+            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>ARMAF</span></li>
+            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>BURBERRY</span></li>
+            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>CHANEL</span></li>
+            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>DIOR</span></li>
+            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>HERMES</span></li>
+            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>GIORGIO ARMANI</span></li>
+            <li><i class="fa fa-square-o" aria-hidden="true"></i><span>LOUIS VUITTON</span></li>*@
+        </ul>
+        <div class="show_more">
+            <span><span>+</span>Show More</span>
+        </div>
+    </div>
+
+</div>

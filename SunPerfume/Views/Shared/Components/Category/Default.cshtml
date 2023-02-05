@@ -2,6 +2,6 @@
 
 @foreach (var cate in Model) {
         <li class="link_container">
-         <a href="/Customer/Category/@cate.Id">@cate.Name</a>
+        <a asp-area="Customer" asp-controller="Product" asp-action="Category" asp-route-cateId="@cate.CategoryId">@cate.Name</a>
          </li>
 }

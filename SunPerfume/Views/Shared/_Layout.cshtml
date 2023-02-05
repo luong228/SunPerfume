@@ -50,31 +50,31 @@
                     <div class="row">
                         <div class="col-lg-12 text-right">
                             <div class="logo_container">
-                                <a href="/Home/Index">Sun <span>perfume</span></a>
+                                <a asp-area="Customer" asp-controller="Home" asp-action="Index">Sun <span>perfume</span></a>
                             </div>
                             <nav class="navbar">
                                 <ul class="navbar_menu">
-                                    <li><a href="/Home/Index">Home</a></li>
+                                    <li><a asp-area="Customer" asp-controller="Home" asp-action="Index">Home</a></li>
                                     <li class="dropdown">
-                                        <a href="/Customer/Category" class="dropdown-toggle"
+                                        <a asp-area="Customer" asp-controller="Product" asp-action="Category" class="dropdown-toggle"
                                            data-toggle="dropdown">Products</a>
                                         <ul class="dropdown-menu container-fluid">
                                             <li class="block-container">
                                                 <ul class="block">
-                                                   @*@await Component.InvokeAsync("Category")*@
+                                                   @await Component.InvokeAsync("Category")
                                                 </ul>
                                             </li>
 
                                         </ul>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="/Customer/Brand/" class="dropdown-toggle"
+                                        <a asp-area="Customer" asp-controller="Product" asp-action="Brand" class="dropdown-toggle"
                                            data-toggle="dropdown">Product brands</a>
                                         <ul class="dropdown-menu container-fluid">
                                             <li class="block-container">
 
                                                 <ul class="block">
-                                                   @*@await Component.InvokeAsync("Brand")*@
+                                                   @await Component.InvokeAsync("Brand")
                                                 </ul>
                                             </li>
 
@@ -122,7 +122,7 @@
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="menu_selection">
-                             @*@await Component.InvokeAsync("Category")*@
+                             @await Component.InvokeAsync("Category")
 
                         </ul>
                     </li>
@@ -265,16 +265,16 @@
 
     </div>
     
-    <script src="~/js/jquery-3.2.1.min.js"></script>
+    <script src="~/js/js/jquery-3.2.1.min.js"></script>
     <script src="~/styles/bootstrap4/popper.js"></script>
     <script src="~/styles/bootstrap4/bootstrap.min.js"></script>
     <script src="~/plugins/Isotope/isotope.pkgd.min.js"></script>
     <script src="~/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
     <script src="~/plugins/easing/easing.js"></script>
-    <script src="~/js/custom.js"></script>
+    <script src="~/js/js/custom.js"></script>
     <script src="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-    <script src="~/js/categories_custom.js"></script>
-    <script src="~/js/jquery.counterup.min.js"></script>
+    <script src="~/js/js/categories_custom.js"></script>
+    <script src="~/js/js/jquery.counterup.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

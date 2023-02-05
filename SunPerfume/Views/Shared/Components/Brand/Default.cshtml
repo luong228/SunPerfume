@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Category>
+﻿@model IEnumerable<Brand>
 
 @foreach (var brand in Model) {
         <li class="link_container">
-         <a href="/Customer/Brand/@brand.Id">@brand.Name</a>
+        <a asp-area="Customer" asp-controller="Product" asp-action="Brand" asp-route-brandId="@brand.BrandId">@brand.Name</a>
          </li>
 }

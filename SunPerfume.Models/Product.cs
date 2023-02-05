@@ -13,24 +13,27 @@ namespace SunPerfume.Models
     public class Product
     {
         [Key]
-        public int Id { get; set; }
+        [MaxLength(5)]
+        public string ProductId { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
         [Required]
-        public string Price { get; set; }
+        public double Price { get; set; }
+        [Required]
+        public double Quantity { get; set; }
         [ValidateNever]
         public string ImageUrl { get; set; }
         [Required]
         [DisplayName("Category")]
-        public int CategoryId { get; set; }
+        public string CategoryId { get; set; }
         [ForeignKey("CategoryId")]
         [ValidateNever]
         public Category Category { get; set; }
         [Required]
         [DisplayName("Brand")]
-        public int BrandId { get; set; }
+        public string BrandId { get; set; }
         [ForeignKey("BrandId")]
         [ValidateNever]
         public Brand Brand { get; set; }

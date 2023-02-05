@@ -15,21 +15,21 @@ namespace SunPerfume.Areas.Customer.Controllers
             _unitOfWork = unitOfWork;
         }
  
-        public IActionResult Category(int? cateId)
+        public IActionResult Category(string? cateId)
         {
             if (cateId == null)
             {
                 ProductVM = new ProductVM()
                 {
-                    Product = _unitOfWork.ProductRepository.GetAll(),
+                    ProductList = _unitOfWork.ProductRepository.GetAll(),
                 };
             }
             else
             {
                 ProductVM = new ProductVM()
                 {
-                    Category = _unitOfWork.CategoryRepository.GetFirstOrDefault(u => u.Id == cateId),
-                    Product = _unitOfWork.ProductRepository.GetAll(u => u.CategoryId == cateId),
+                    Category = _unitOfWork.CategoryRepository.GetFirstOrDefault(u => u.CategoryId == cateId),
+                    ProductList = _unitOfWork.ProductRepository.GetAll(u => u.CategoryId == cateId),
 
                 };
             }

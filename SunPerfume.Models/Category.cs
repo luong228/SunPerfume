@@ -11,7 +11,8 @@ namespace SunPerfume.Models
     public class Category
     {
         [Key]
-        public int Id { get; set; }
+        [MaxLength(5)]
+        public string CategoryId { get; set; }
         [Required]
         public string Name { get; set; }
         public string Note { get; set; }
