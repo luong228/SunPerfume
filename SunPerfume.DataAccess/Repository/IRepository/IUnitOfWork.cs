@@ -8,6 +8,7 @@ namespace SunPerfume.DataAccess.Repository.IRepository
 {
     public interface IUnitOfWork
     {
+        public 
         void Save();
     }
 }

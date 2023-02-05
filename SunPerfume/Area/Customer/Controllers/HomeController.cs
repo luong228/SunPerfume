@@ -2,8 +2,9 @@
 using SunPerfume.Models;
 using System.Diagnostics;
 
-namespace SunPerfume.Controllers
+namespace SunPerfume.Area.Customer.Controllers
 {
+    [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
