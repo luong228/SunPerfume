@@ -1,6 +1,6 @@
 ﻿@model SunPerfume.Models.ViewModels.ProductVM
 @{
-    ViewData["Title"] = "Category List";
+    ViewData["Title"] = "Brand List";
 }
 
 <link href="~/styles/categories_responsive.css" rel="stylesheet" />
@@ -8,38 +8,37 @@
 <div class="container product_section_container">
     <div class="row">
         <div class="col product_section clearfix">
-            <br />
+
+            <!-- Breadcrumbs -->
 
             <div class="breadcrumbs d-flex flex-row align-items-center">
                 <ul>
                     <li><a asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li>
-                        <i class="fa fa-angle-right" aria-hidden="true"></i>
-                        <a asp-area="Customer" asp-controller="Product" asp-action="Category">Product Category</a>
-                    </li>
-                  
-                        @if (Model.Category == null)
+                    <li><a asp-controller="Product" asp-action="Brand"><i class="fa fa-angle-right" aria-hidden="true"></i>Product brands</a></li>
+                     
+                        @if (Model.Brand == null)
                         {
                             <li>
-                            <a asp-area="Customer" asp-controller="Product" asp-action="Category" class="text-danger">
+                                <a asp-area="Customer" asp-controller="Product" asp-action="Brand">
                                     <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                        All Categories</a>
+                                        All Brands</a>
                             </li>
                         }
                         else
                         {
-                            <li>
-                            <a asp-action="Category" asp-route-cateId="@Model.Category.CategoryId" class="text-danger">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>@Model.Category.CategoryId</a>
-                            </li>
+                        <li>
+                            <a asp-action="Brand" asp-route-cateId="@Model.Brand.BrandId">
+                                <i class="fa fa-angle-right" aria-hidden="true"></i>@Model.Brand.BrandId
+                            </a>
+                        </li>
                         }
 
 
                 </ul>
             </div>
 
-            <!-- Section Filter -->
             @await Component.InvokeAsync("FilterSidebar")
+
             <!-- Main Content -->
 
             <div class="main_content">
@@ -75,16 +74,16 @@
                                     </li>
                                 </ul>
                                 <div class="pages d-flex flex-row align-items-center">
-                                    <div class="container ">
-
-                                        @using (Html.BeginForm("ProCata", "Product", FormMethod.Get))
-                                        {
-
-                                            @Html.TextBox("searchString", null, new { @class = "form-control-sm", @placeholder = "Search Here" })
-                                            <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
-                                        }
+                                    <div class="page_current">
+                                        <span>1</span>
+                                        <ul class="page_selection">
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                        </ul>
                                     </div>
-
+                                    <div class="page_total"><span>of</span> 3</div>
+                                    <div id="next_page" class="page_next"><a href="#"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></div>
                                 </div>
 
                             </div>
@@ -96,7 +95,7 @@
                                 <!-- Product 3 -->
                                 @foreach (var item in Model.ProductList)
                                 {
-                                    <div class="product-item @item.CategoryId">
+                                    <div class="product-item @item.BrandId">
                                         <div class="product product_filter">
                                             <div class="product_image">
                                                 <a asp-controller="Product" asp-action="Detail" asp-route-proId="@item.ProductId">
@@ -106,8 +105,7 @@
                                             </div>
                                             <div class="favorite"></div>
                                             <div class="product_info">
-                                                <h6 class="product_name"><a asp-controller="Product" asp-action="Detail" asp-route-proId="@item.ProductId">
-                                                    @item.Name</a></h6>
+                                                <h6 class="product_name"><a asp-controller="Product" asp-action="Detail" asp-route-proId="@item.ProductId">@item.Name</a></h6>
                                                 <div class="product_price">@string.Format("{0:#,##0}", item.Price) đ</div>
                                             </div>
                                         </div>
@@ -149,11 +147,34 @@
 
                             </div>
 
+
+                            <br />
+                            <br />
+                            @{
+                                if (Model.Brand != null)
+                                {
+                                    <!-- Mo ta thuong hieu -->
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="tab_text_block">
+                                                <h4>@Model.Brand.Name</h4>
+                                                <p>@Model.Brand.Description</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+
                         </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
 

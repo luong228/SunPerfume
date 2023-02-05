@@ -1,5 +1,8 @@
 ﻿@model SunPerfume.Models.ViewModels.BrandCategoryVM
 
+@{
+    
+}
 <!-- Sidebar -->
 <div class="sidebar">
     <div class="sidebar_section">
@@ -13,7 +16,7 @@
 
             @foreach (var item in Model.CategoryList)
             {
-                if (item.CategoryId == null)
+                if (item.CategoryId == ViewData["cateId"] as string)
                 {
                     <li class="active"><a 
                         asp-area="Customer" asp-controller="Product" 
@@ -55,7 +58,7 @@
         <ul class="sidebar_categories">
             @foreach (var item in Model.BrandList)
             {
-                if (item.BrandId == null)
+                if (item.BrandId == ViewData["brandId"] as string)
                 {
                     <li class="active"><a asp-area="Customer" asp-controller="Product" asp-action="Brand">
                         <span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>

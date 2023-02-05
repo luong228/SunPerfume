@@ -35,5 +35,25 @@ namespace SunPerfume.Areas.Customer.Controllers
             }
             return View(ProductVM);
         }
+        public IActionResult Brand(string brandId) 
+        {
+            if (brandId == null)
+            {
+                ProductVM = new ProductVM()
+                {
+                    ProductList = _unitOfWork.ProductRepository.GetAll(),
+                };
+            }
+            else
+            {
+                ProductVM = new ProductVM()
+                {
+                    Brand = _unitOfWork.BrandRepository.GetFirstOrDefault(u => u.BrandId == brandId),
+                    ProductList = _unitOfWork.ProductRepository.GetAll(u => u.BrandId == brandId),
+
+                };
+            }
+            return View(ProductVM);
+        }
     }
 }
