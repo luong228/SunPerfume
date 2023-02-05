@@ -13,21 +13,21 @@ namespace SunPerfume.DataAccess.Repository
     public class Repository<T> : IRepository<T> where T : class
     {
         private readonly ApplicationDbContext _db;
-        internal DbSet<T> _dbSet;
+        internal DbSet<T> dbSet;
 
-        public Repository(ApplicationDbContext db, DbSet<T> dbSet)
+        public Repository(ApplicationDbContext db)
         {
             _db = db;
-            _dbSet = dbSet;
+            this.dbSet = _db.Set<T>();
         }
         public void Add(T entity)
         {
-            _dbSet.Add(entity);
+            dbSet.Add(entity);
         }
 
-        public IEnumerable<T> GetAll(Expression<Func<T, bool>> filter, string? includeProperties = null)
+        public IEnumerable<T> GetAll(Expression<Func<T, bool>>? filter = null, string? includeProperties = null)
         {
-            IQueryable<T> query = _dbSet;
+            IQueryable<T> query = dbSet;
 
             if (filter != null)
             {
@@ -49,11 +49,11 @@ namespace SunPerfume.DataAccess.Repository
 
             if (tracked)
             {
-                query = _dbSet;
+                query = dbSet;
             }
             else
             {
-                query = _dbSet.AsNoTracking();
+                query = dbSet.AsNoTracking();
             }
 
             if ( filter != null)
@@ -74,12 +74,12 @@ namespace SunPerfume.DataAccess.Repository
 
         public void Remove(T entity)
         {
-            _dbSet.Remove(entity);
+            dbSet.Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<T> entities)
         {
-            _dbSet.RemoveRange(entities);
+            dbSet.RemoveRange(entities);
         }
     }
 }

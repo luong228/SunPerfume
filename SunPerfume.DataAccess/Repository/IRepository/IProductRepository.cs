@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SunPerfume.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SunPerfume.DataAccess.Repository.IRepository
 {
-    public interface IProductRepository
+    public interface IProductRepository : IRepository<Product>
     {
-        void Update();
+        void Update(Product obj);
     }
 }

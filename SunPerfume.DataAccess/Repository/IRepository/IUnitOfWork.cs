@@ -8,7 +8,10 @@ namespace SunPerfume.DataAccess.Repository.IRepository
 {
     public interface IUnitOfWork
     {
-        ICategory Category { get; } 
+        ICategoryRepository CategoryRepository { get; } 
+        IBrandRepository BrandRepository { get; }
+        IProductRepository ProductRepository { get; }
+        ICartRepository CartRepository { get; }
         void Save();
     }
 }
