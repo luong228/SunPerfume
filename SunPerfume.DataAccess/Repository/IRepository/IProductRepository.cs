@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace SunPerfume.DataAccess.Repository.IRepository
 {
-    public interface IUnitOfWork
+    public interface IProductRepository
     {
-        ICategory Category { get; } 
-        void Save();
+        void Update();
     }
 }
