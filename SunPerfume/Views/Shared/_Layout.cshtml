@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -10,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
     <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
     <link rel="stylesheet" type="text/css" href="~/plugins/OwlCarousel2-2.2.1/animate.css">
-
+    <link rel="stylesheet" type="text/css" href="~/styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="~/styles/responsive.css">
     <link href="~/styles/single_responsive.css" rel="stylesheet" />
 
@@ -20,8 +21,6 @@
 <body>
 
     <div class="super_container">
-
-
 
         <!-- Header -->
 
@@ -57,35 +56,25 @@
                                 <ul class="navbar_menu">
                                     <li><a href="/Home/Index">Home</a></li>
                                     <li class="dropdown">
-                                        <a href="/Product/ProCata" class="dropdown-toggle"
+                                        <a href="/Customer/Category" class="dropdown-toggle"
                                            data-toggle="dropdown">Products</a>
                                         <ul class="dropdown-menu container-fluid">
                                             <li class="block-container">
                                                 <ul class="block">
-                                                    @for (int i = 0; i < dt.Rows.Count; i++)
-                                                    {
-                                                        <li class="link_container">
-                                                            <a href="/Product/ProCata/@dt.Rows[i][0].ToString()">@dt.Rows[i][1].ToString()</a>
-                                                        </li>
-                                                    }
+                                                   @*@await Component.InvokeAsync("Category")*@
                                                 </ul>
                                             </li>
 
                                         </ul>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="/Product/ProbyTH" class="dropdown-toggle"
+                                        <a href="/Customer/Brand/" class="dropdown-toggle"
                                            data-toggle="dropdown">Product brands</a>
                                         <ul class="dropdown-menu container-fluid">
                                             <li class="block-container">
 
                                                 <ul class="block">
-                                                    @for (int i = 0; i < dtTH.Rows.Count; i++)
-                                                    {
-                                                        <li class="link_container">
-                                                            <a href="/Product/ProbyTH/@dtTH.Rows[i][0].ToString()">@dtTH.Rows[i][1].ToString()</a>
-                                                        </li>
-                                                    }
+                                                   @*@await Component.InvokeAsync("Brand")*@
                                                 </ul>
                                             </li>
 
@@ -133,10 +122,7 @@
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="menu_selection">
-                            @for (int i = 0; i < dt.Rows.Count; i++)
-                            {
-                                <li><a href="/Product/ProCata/@dt.Rows[i][0].ToString()">@dt.Rows[i][1].ToString()</a></li>
-                            }
+                             @*@await Component.InvokeAsync("Category")*@
 
                         </ul>
                     </li>
@@ -270,7 +256,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="footer_nav_container">
-                            <div class="cr">©2021 All Rights Reserverd. Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="http://facebook.com/anhluong059">LuongHC</a> @*&amp; distributed by <a href="https://themewagon.com">ThemeWagon</a>*@</div>
+                            <div class="cr">©2023 All Rights Reserverd. Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="http://facebook.com/anhluong059">LuongHC</a> @*&amp; distributed by <a href="https://themewagon.com">ThemeWagon</a>*@</div>
                         </div>
                     </div>
                 </div>

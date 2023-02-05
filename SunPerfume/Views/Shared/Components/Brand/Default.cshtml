@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Category>
+
+@foreach (var brand in Model) {
+        <li class="link_container">
+         <a href="/Customer/Brand/@brand.Id">@brand.Name</a>
+         </li>
+}

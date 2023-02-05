@@ -14,7 +14,8 @@ namespace SunPerfume.Area.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var listCategory = _unitOfWork.CategoryRepository.GetAll();
+            return View(listCategory);
         }
     }
 }
