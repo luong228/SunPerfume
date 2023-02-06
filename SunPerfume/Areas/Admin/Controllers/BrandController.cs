@@ -15,8 +15,8 @@ namespace SunPerfume.Area.Admin.Controllers
 
         public IActionResult Index()
         {
-            //IEnumerable<Brand> listBrand = _unitOfWork.BrandRepository.GetAll();
-            return View();
+            IEnumerable<Brand> listBrand = _unitOfWork.BrandRepository.GetAll();
+            return View(listBrand);
         }
     }
 }
