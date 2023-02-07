@@ -29,9 +29,6 @@
       <li class="nav-item d-none d-sm-inline-block">
         <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -94,24 +91,29 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Pages
+                CMS
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../examples/invoice.html" class="nav-link">
+                <a asp-controller="Category" asp-action="Index" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Invoice</p>
+                  <p>Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../examples/profile.html" class="nav-link">
+                <a asp-controller="Brand" asp-action="Index"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Profile</p>
+                  <p>Brand</p>
                 </a>
               </li>
-            
+               <li class="nav-item">
+                <a asp-controller="Product" asp-action="Index"  class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Product</p>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>

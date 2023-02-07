@@ -34,13 +34,12 @@ namespace SunPerfume.Area.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Upsert(Brand obj)
+        public IActionResult Upsert(Brand obj, string action)
         {
             if (ModelState.IsValid)
             {
-                if (obj.BrandId == "new")
+                if (action == "create")
                 {
-                    obj.BrandId = "";
                     _unitOfWork.BrandRepository.Add(obj);
                     TempData["success"] = "Brand created successfully";
 

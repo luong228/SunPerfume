@@ -1,0 +1,105 @@
+﻿@model Category
+@{
+    ViewData["Title"] = "Upsert";
+    var tempId = Model.CategoryId == null ? "new" : @Model.CategoryId;
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>@(Model.CategoryId != null ? "Update" : "Create") Category</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active">@(Model.CategoryId != null ? "Update" : "Create") Category</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <!-- left column -->
+                <div class="col-md-12">
+                    <div class="product_image" style="text-align:center; max-width:500px;">
+
+                        <img src="~/images/@Model.ImageUrl" style="width: 100%" alt="">
+                    </div>
+
+                    <div class="card card-primary">
+                        <form method="post" asp-action="Upsert" enctype="multipart/form-data">
+                            <input asp-for="CategoryId" value="@tempId" hidden />
+                            <input asp-for="ImageUrl" hidden />
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label asp-for="Name"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Note"></label>
+                                    <textarea asp-for="Note" class="form-control"></textarea>
+                                    <span asp-validation-for="Note" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ImageUrl"></label>
+                                    <div class="input-group">
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" name="file" id="uploadBox">
+                                            <label class="custom-file-label" asp-for="ImageUrl">Choose file</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                @if (Model.CategoryId == null)
+                                {
+                                    <button onClick="return ValidateInput()" type="submit" class="btn btn-primary">Create</button>
+
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-primary">Update</button>
+                                }
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+
+    }
+    <script src="~/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <script>
+        function ValidateInput() {
+            if (document.getElementById("uploadBox").value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please upload the image!'
+                })
+                return false;
+            }
+            return true;
+        }
+        $(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
+
+    }
