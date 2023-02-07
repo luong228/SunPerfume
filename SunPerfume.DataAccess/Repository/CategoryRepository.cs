@@ -19,7 +19,7 @@ namespace SunPerfume.DataAccess.Repository
 
         public void Update(Category obj)
         {
-            throw new NotImplementedException();
+            _db.Categories.Update(obj);
         }
     }
 }

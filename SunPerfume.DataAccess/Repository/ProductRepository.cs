@@ -19,7 +19,7 @@ namespace SunPerfume.DataAccess.Repository
 
         public void Update(Product obj)
         {
-            throw new NotImplementedException();
+            _db.Products.Update(obj);
         }
     }
 }
