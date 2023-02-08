@@ -2,7 +2,7 @@
 using SunPerfume.DataAccess.Repository.IRepository;
 using SunPerfume.Models;
 
-namespace SunPerfume.Area.Admin.Controllers
+namespace SunPerfumeWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class BrandController : Controller
@@ -22,7 +22,7 @@ namespace SunPerfume.Area.Admin.Controllers
         {
             Brand brand = new();
             if (id == null)
-            { 
+            {
                 return View(brand);
             }
             else
@@ -30,7 +30,7 @@ namespace SunPerfume.Area.Admin.Controllers
                 brand = _unitOfWork.BrandRepository.GetFirstOrDefault(u => u.BrandId == id);
                 return View(brand);
             }
-           
+
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -44,7 +44,7 @@ namespace SunPerfume.Area.Admin.Controllers
                     TempData["success"] = "Brand created successfully";
 
                 }
-                else 
+                else
                 {
                     _unitOfWork.BrandRepository.Update(obj);
                     TempData["success"] = "Brand updated successfully";

@@ -2,7 +2,7 @@
 using SunPerfume.DataAccess.Repository.IRepository;
 using SunPerfume.Models.ViewModels;
 
-namespace SunPerfume.Areas.Customer.Controllers
+namespace SunPerfumeWeb.Areas.Customer.Controllers
 {
     [Area("Customer")]
     public class ProductController : Controller
@@ -14,7 +14,7 @@ namespace SunPerfume.Areas.Customer.Controllers
         {
             _unitOfWork = unitOfWork;
         }
- 
+
         public IActionResult Category(string? cateId)
         {
             if (cateId == null)
@@ -35,7 +35,7 @@ namespace SunPerfume.Areas.Customer.Controllers
             }
             return View(ProductVM);
         }
-        public IActionResult Brand(string brandId) 
+        public IActionResult Brand(string brandId)
         {
             if (brandId == null)
             {

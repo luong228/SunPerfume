@@ -2,7 +2,7 @@
 using SunPerfume.DataAccess.Repository.IRepository;
 using SunPerfume.Models;
 
-namespace SunPerfume.ViewComponents
+namespace SunPerfumeWeb.ViewComponents
 {
     public class CategoryViewComponent : ViewComponent
     {

@@ -17,6 +17,7 @@ namespace SunPerfume.DataAccess.Repository
             CategoryRepository = new CategoryRepository(_db);
             BrandRepository = new BrandRepository(_db);
             ProductRepository = new ProductRepository(_db);
+            CompanyRepository = new CompanyRepository(_db);
             CartRepository = new CartRepository(_db);
 
         }
@@ -26,6 +27,7 @@ namespace SunPerfume.DataAccess.Repository
         public IBrandRepository BrandRepository { get; private set; }
 
         public IProductRepository ProductRepository { get; private set; }
+        public ICompanyRepository CompanyRepository { get; private set; }
 
         public ICartRepository CartRepository { get; private set; }
 

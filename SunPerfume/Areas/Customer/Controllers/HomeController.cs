@@ -4,7 +4,7 @@ using SunPerfume.Models;
 using SunPerfume.Models.ViewModels;
 using System.Diagnostics;
 
-namespace SunPerfume.Area.Customer.Controllers
+namespace SunPerfumeWeb.Areas.Customer.Controllers
 {
     [Area("Customer")]
     public class HomeController : Controller

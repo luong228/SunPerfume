@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Http;
 
-namespace SunPerfume.Area.Admin.Controllers
+namespace SunPerfumeWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class CategoryController : Controller

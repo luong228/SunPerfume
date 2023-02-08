@@ -5,7 +5,7 @@ using SunPerfume.Models.ViewModels;
 using System.Web;
 using System;
 
-namespace SunPerfume.ViewComponents
+namespace SunPerfumeWeb.ViewComponents
 {
     public class FilterSidebarViewComponent : ViewComponent
     {

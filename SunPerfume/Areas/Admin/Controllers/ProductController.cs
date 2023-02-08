@@ -5,7 +5,7 @@ using SunPerfume.DataAccess.Repository.IRepository;
 using SunPerfume.Models;
 using SunPerfume.Models.ViewModels;
 
-namespace SunPerfume.Area.Admin.Controllers
+namespace SunPerfumeWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ProductController : Controller

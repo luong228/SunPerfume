@@ -20,7 +20,7 @@ using Microsoft.Extensions.Logging;
 using SunPerfume.Models;
 using SunPerfume.Utility;
 
-namespace BulkyBookWeb.Areas.Identity.Pages.Account
+namespace SunPerfumeWeb.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
     public class ExternalLoginModel : PageModel

@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using SunPerfume.DataAccess.Repository.IRepository;
 
-namespace SunPerfume.Area.Customer.Controllers
+namespace SunPerfumeWeb.Areas.Customer.Controllers
 {
     [Area("Customer")]
     public class CartController : Controller
