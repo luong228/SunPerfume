@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunPerfume", "SunPerfume\SunPerfume.csproj", "{4F2062A2-C95A-436E-AA51-068DC5FC47CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunPerfumeWeb", "SunPerfume\SunPerfumeWeb.csproj", "{4F2062A2-C95A-436E-AA51-068DC5FC47CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunPerfume.DataAccess", "SunPerfume.DataAccess\SunPerfume.DataAccess.csproj", "{E5189674-22C0-4E6A-AF4D-D235DC2325C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunPerfume.DataAccess", "SunPerfume.DataAccess\SunPerfume.DataAccess.csproj", "{E5189674-22C0-4E6A-AF4D-D235DC2325C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunPerfume.Models", "SunPerfume.Models\SunPerfume.Models.csproj", "{06656888-B1DA-4CFA-8E0A-43AD4EC8ED15}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunPerfume.Models", "SunPerfume.Models\SunPerfume.Models.csproj", "{06656888-B1DA-4CFA-8E0A-43AD4EC8ED15}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunPerfume.Utility", "SunPerfume.Utility\SunPerfume.Utility.csproj", "{7A6FC86A-CC0D-499E-8DCA-E69B24948576}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SunPerfume.Utility", "SunPerfume.Utility\SunPerfume.Utility.csproj", "{7A6FC86A-CC0D-499E-8DCA-E69B24948576}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
