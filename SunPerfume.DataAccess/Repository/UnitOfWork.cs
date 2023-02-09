@@ -19,6 +19,9 @@ namespace SunPerfume.DataAccess.Repository
             ProductRepository = new ProductRepository(_db);
             CompanyRepository = new CompanyRepository(_db);
             CartRepository = new CartRepository(_db);
+            OrderHeaderRepository = new OrderHeaderRepository(_db);
+            OrderDetailRepository = new OrderDetailRepository(_db);
+            ApplicationUserRepository = new ApplicationUserRepository(_db);
 
         }
 
@@ -30,8 +33,11 @@ namespace SunPerfume.DataAccess.Repository
         public ICompanyRepository CompanyRepository { get; private set; }
 
         public ICartRepository CartRepository { get; private set; }
+		public IOrderHeaderRepository OrderHeaderRepository { get; private set; }
+		public IOrderDetailRepository OrderDetailRepository { get; private set; }
+		public IApplicationUserRepository ApplicationUserRepository { get; private set; }
 
-        public void Save()
+		public void Save()
         {
             _db.SaveChanges();
         }
