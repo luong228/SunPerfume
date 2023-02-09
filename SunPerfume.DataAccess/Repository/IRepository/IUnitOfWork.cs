@@ -13,6 +13,9 @@ namespace SunPerfume.DataAccess.Repository.IRepository
         IProductRepository ProductRepository { get; }
         ICartRepository CartRepository { get; }
         ICompanyRepository CompanyRepository { get; }
+        IOrderHeaderRepository OrderHeaderRepository { get; }
+        IOrderDetailRepository OrderDetailRepository { get; }
+        IApplicationUserRepository ApplicationUserRepository { get; }
         void Save();
     }
 }

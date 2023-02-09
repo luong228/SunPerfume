@@ -9,22 +9,12 @@ using System.Threading.Tasks;
 
 namespace SunPerfume.DataAccess.Repository
 {
-    public class CartRepository : Repository<Cart>, ICartRepository
+    public class ApplicationUserRepository : Repository<ApplicationUser>, IApplicationUserRepository
     {
         private readonly ApplicationDbContext _db;
-        public CartRepository(ApplicationDbContext db) : base(db)
+        public ApplicationUserRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
-        }
-
-        public void DecrementCount(Cart cart, int count)
-        {
-            cart.Count -= count;
-        }
-
-        public void IncrementCount(Cart cart, int count)
-        {
-            cart.Count += count;
         }
     }
 }
