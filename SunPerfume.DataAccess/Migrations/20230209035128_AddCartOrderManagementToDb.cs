@@ -55,7 +55,7 @@ namespace SunPerfume.DataAccess.Migrations
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "OrderHeader",
+                name: "OrderHeaders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -81,9 +81,9 @@ namespace SunPerfume.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderHeader", x => x.Id);
+                    table.PrimaryKey("PK_OrderHeaders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderHeader_AspNetUsers_ApplicationUserId",
+                        name: "FK_OrderHeaders_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -91,7 +91,7 @@ namespace SunPerfume.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderDetail",
+                name: "OrderDetails",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -103,15 +103,15 @@ namespace SunPerfume.DataAccess.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderDetail", x => x.Id);
+                    table.PrimaryKey("PK_OrderDetails", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderDetail_OrderHeader_OrderId",
+                        name: "FK_OrderDetails_OrderHeaders_OrderId",
                         column: x => x.OrderId,
-                        principalTable: "OrderHeader",
+                        principalTable: "OrderHeaders",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderDetail_Products_ProductId",
+                        name: "FK_OrderDetails_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "ProductId",
@@ -124,18 +124,18 @@ namespace SunPerfume.DataAccess.Migrations
                 column: "CompanyId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetail_OrderId",
-                table: "OrderDetail",
+                name: "IX_OrderDetails_OrderId",
+                table: "OrderDetails",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderDetail_ProductId",
-                table: "OrderDetail",
+                name: "IX_OrderDetails_ProductId",
+                table: "OrderDetails",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderHeader_ApplicationUserId",
-                table: "OrderHeader",
+                name: "IX_OrderHeaders_ApplicationUserId",
+                table: "OrderHeaders",
                 column: "ApplicationUserId");
 
             migrationBuilder.AddForeignKey(
@@ -155,10 +155,10 @@ namespace SunPerfume.DataAccess.Migrations
                 table: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "OrderDetail");
+                name: "OrderDetails");
 
             migrationBuilder.DropTable(
-                name: "OrderHeader");
+                name: "OrderHeaders");
 
             migrationBuilder.DropIndex(
                 name: "IX_AspNetUsers_CompanyId",

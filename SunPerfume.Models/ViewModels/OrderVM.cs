@@ -9,6 +9,7 @@ namespace SunPerfume.Models.ViewModels
 {
     public class OrderVM
     {
+        // Order Management in Admin section - Like CartVM for Customer
         public OrderHeader OrderHeader { get; set; }
         public IEnumerable<OrderDetail> OrderDetail { get; set; }
     }
