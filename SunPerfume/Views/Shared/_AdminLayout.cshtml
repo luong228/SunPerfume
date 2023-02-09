@@ -8,6 +8,7 @@
     var categoryItem = "";
     var productItem = "";
     var companyItem = "";
+    var orderItem = "";
     var cmsListItem = "";
     switch (@ViewContext.RouteData.Values["controller"])
     {
@@ -25,6 +26,10 @@
             break;
         case "Company":
             companyItem = "active";
+            cmsListItem = "active";
+            break;
+        case "Order":
+            orderItem = "active";
             cmsListItem = "active";
             break;
 
@@ -149,6 +154,12 @@
                 <a asp-controller="Company" asp-action="Index" class="nav-link @companyItem">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Company</p>
+                </a>
+              </li>
+              </li>  <li class="nav-item">
+                <a asp-controller="Order" asp-action="Index" class="nav-link @orderItem">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Order</p>
                 </a>
               </li>
             </ul>

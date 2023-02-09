@@ -1,4 +1,5 @@
 ﻿@model SunPerfume.Models.ViewModels.CartVM
+@using System.Globalization
 @using Microsoft.Extensions.Options
 @inject IOptions<SunPerfume.Utility.StripeSettings> Stripe // Use Tripe Info In view
 
@@ -94,13 +95,13 @@
 											<h6 class="my-0">@cart.Product.Name</h6>
 											<small class="text-muted">Quantity: @cart.Count</small>
 										</div>
-										<span class="text-muted">@((cart.Price * cart.Count).ToString("c")) </span>
+										<span class="text-muted">@((cart.Price * cart.Count).ToString("c", CultureInfo.CreateSpecificCulture("vi-VN"))) </span>
 									</li>
 								}
 
 								<li class="list-group-item d-flex justify-content-between bg-light">
 									<small class="text-info">Total (USD)</small>
-									<strong class="text-info">@Model.OrderHeader.OrderTotal.ToString("c")</strong>
+									<strong class="text-info">@Model.OrderHeader.OrderTotal.ToString("c", CultureInfo.CreateSpecificCulture("vi-VN"))</strong>
 								</li>
 							</ul>
 						</div>
