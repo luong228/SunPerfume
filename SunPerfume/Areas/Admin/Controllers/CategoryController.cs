@@ -3,10 +3,14 @@ using SunPerfume.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using SunPerfume.Utility;
+using System.Data;
 
 namespace SunPerfumeWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -94,6 +98,14 @@ namespace SunPerfumeWeb.Areas.Admin.Controllers
             if (obj == null)
             {
                 return Json(new { success = false, message = "Error while deleting" });
+            }
+            //Delete old image
+            string wwwRootPath = _hostEnvironment.WebRootPath;
+            var oldImagePath = wwwRootPath + "\\images\\";
+            oldImagePath = Path.Combine(oldImagePath, obj.ImageUrl.TrimStart('\\'));
+            if (System.IO.File.Exists(oldImagePath))
+            {
+                System.IO.File.Delete(oldImagePath);
             }
 
             _unitOfWork.CategoryRepository.Remove(obj);
