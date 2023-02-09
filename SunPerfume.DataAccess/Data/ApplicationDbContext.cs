@@ -21,5 +21,7 @@ namespace SunPerfume.DataAccess.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Cart> Carts { get; set; }
+        public DbSet<OrderHeader> OrderHeader { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
     }
 }
