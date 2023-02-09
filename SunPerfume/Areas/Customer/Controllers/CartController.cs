@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using SunPerfume.DataAccess.Repository.IRepository;
 using SunPerfume.Models.ViewModels;
+using SunPerfume.Utility;
 using System.Security.Claims;
 
 namespace SunPerfumeWeb.Areas.Customer.Controllers
@@ -35,7 +36,8 @@ namespace SunPerfumeWeb.Areas.Customer.Controllers
             };
             foreach (var cart in CartVM.ListCart)
             {
-                CartVM.OrderHeader.OrderTotal += cart.Product.Price * cart.Count;
+                cart.Price = cart.Product.Price;
+                CartVM.OrderHeader.OrderTotal += cart.Price * cart.Count;
             }
             return View(CartVM);
         }
@@ -62,9 +64,44 @@ namespace SunPerfumeWeb.Areas.Customer.Controllers
 
 			foreach (var cart in CartVM.ListCart)
 			{
+                cart.Price = cart.Product.Price;
 				CartVM.OrderHeader.OrderTotal += cart.Product.Price * cart.Count;
 			}
 			return View(CartVM);
 		}
-	}
+        public IActionResult Plus(int cartId)
+        {
+            var cart = _unitOfWork.CartRepository.GetFirstOrDefault(u => u.Id == cartId);
+            _unitOfWork.CartRepository.IncrementCount(cart, 1);
+            _unitOfWork.Save();
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Minus(int cartId)
+        {
+            var cart = _unitOfWork.CartRepository.GetFirstOrDefault(u => u.Id == cartId);
+            if (cart.Count <= 1)
+            {
+                _unitOfWork.CartRepository.Remove(cart);
+                HttpContext.Session.SetInt32(SD.SessionCart,
+                    _unitOfWork.CartRepository.GetAll(u => u.ApplicationUserId ==
+                        cart.ApplicationUserId).ToList().Count - 1);
+            }
+            else
+            {
+                _unitOfWork.CartRepository.DecrementCount(cart, 1);
+            }
+            _unitOfWork.Save();
+            return RedirectToAction(nameof(Index));
+        }
+        public IActionResult Remove(int cartId)
+        {
+            var cart = _unitOfWork.CartRepository.GetFirstOrDefault(u => u.Id == cartId);
+            _unitOfWork.CartRepository.Remove(cart);
+            HttpContext.Session.SetInt32(SD.SessionCart,
+                    _unitOfWork.CartRepository.GetAll(u => u.ApplicationUserId ==
+                        cart.ApplicationUserId).ToList().Count - 1);
+            _unitOfWork.Save();
+            return RedirectToAction(nameof(Index));
+        }
+    }
 }

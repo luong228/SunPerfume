@@ -62,7 +62,7 @@
                         <div class="product-item @item.CategoryId">
                             <div class="product product_filter">
                                 <div class="product_image">
-                                    <a asp-controller="Product" asp-action="Detail" asp-route-proId="@item.ProductId">
+                                    <a asp-controller="Product" asp-action="Details" asp-route-productId="@item.ProductId">
                                         <img src="~/images/@item.ImageUrl" alt="">
                                     </a>
 
@@ -71,14 +71,14 @@
                                 <div class="favorite favorite_left"></div>
                                 <div class="product_info">
                                     <h6 class="product_name">
-                                        <a asp-controller="Product" asp-action="Detail" asp-route-proId="@item.ProductId">
+                                        <a asp-controller="Product" asp-action="Details" asp-route-productId="@item.ProductId">
                                             <b>@item.Name</b>
                                         </a>
                                     </h6>
                                     <div class="product_price">@string.Format("{0:#,##0}", item.Price) đ</div>
                                 </div>
                             </div>
-                            <div class="red_button add_to_cart_button"><a href="/GioHang/AddtoCart/@item.ProductId">Mua hàng</a></div>
+                            <div class="red_button add_to_cart_button"><a asp-controller="Product" asp-action="Details" asp-route-productId="@item.ProductId">Mua hàng</a></div>
                         </div>
                     }
 
@@ -115,7 +115,7 @@
                                     <div class="product-item">
                                         <div class="product discount">
                                             <div class="product_image">
-                                                <a asp-controller="Product" asp-action="Detail" asp-route-proId="@item.ProductId">
+                                                <a asp-controller="Product" asp-action="Details" asp-route-productId="@item.ProductId">
                                                     <img src="~/images/@item.ImageUrl" alt="">
                                                 </a>
 
@@ -126,7 +126,7 @@
                                             </div>
                                             <div class="product_info">
                                                 <h6 class="product_name">
-                                                    <a asp-controller="Product" asp-action="Detail" asp-route-proId="@item.ProductId">
+                                                    <a asp-controller="Product" asp-action="Details" asp-route-productId="@item.ProductId">
                                                         @item.Name
                                                     </a>
                                                 </h6>
