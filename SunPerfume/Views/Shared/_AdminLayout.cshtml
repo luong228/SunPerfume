@@ -10,6 +10,7 @@
     var companyItem = "";
     var orderItem = "";
     var dashboardItem = "";
+    var userItem = "";
     var cmsListItem = "";
     var isCMS = "";
     var openArrow = "";
@@ -37,6 +38,9 @@
             break;
         case "Dashboard":
             dashboardItem = "active";
+            break;
+            case "User":
+            userItem = "active";
             break;
         case "Order":
             orderItem = "active";
@@ -156,13 +160,14 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Product</p>
                 </a>
-              </li>  <li class="nav-item">
+              </li>  
+              <li class="nav-item">
                 <a asp-controller="Company" asp-action="Index" class="nav-link @companyItem">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Company</p>
                 </a>
               </li>
-              </li>  <li class="nav-item">
+              <li class="nav-item">
                 <a asp-controller="Order" asp-action="Index" class="nav-link @orderItem">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Order</p>
@@ -170,6 +175,14 @@
               </li>
             </ul>
           </li>
+           <li class="nav-item">
+                    <a asp-controller="User" asp-action="Index" class="nav-link @userItem">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                User
+              </p>
+            </a>
+              </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
