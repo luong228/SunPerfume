@@ -9,30 +9,45 @@
     var productItem = "";
     var companyItem = "";
     var orderItem = "";
+    var dashboardItem = "";
     var cmsListItem = "";
+    var isCMS = "";
+    var openArrow = "";
     switch (@ViewContext.RouteData.Values["controller"])
     {
         case "Brand":
             brandItem = "active";
             cmsListItem = "active";
+            isCMS = "display: block;";
             break;
         case "Category":
             categoryItem = "active";
             cmsListItem = "active";
+            isCMS = "display: block;";
             break;
         case "Product":
             productItem = "active";
             cmsListItem = "active";
+            isCMS = "display: block;";
             break;
         case "Company":
             companyItem = "active";
             cmsListItem = "active";
+            isCMS = "display: block;";
+            break;
+        case "Dashboard":
+            dashboardItem = "active";
             break;
         case "Order":
             orderItem = "active";
             cmsListItem = "active";
+            isCMS = "display: block;";
             break;
 
+    }
+    if (isCMS == "display: block;")
+    {
+        openArrow = "menu-open";
     }
 }
 <!DOCTYPE html>
@@ -41,7 +56,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin - SunPerfume</title>
+  <title>@ViewData["Title"] - Admin SunPerfume</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -108,23 +123,14 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+                    <a asp-controller="Dashboard" asp-action="Index" class="nav-link @dashboardItem">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
-                </a>
               </li>
-              </ul>
-              </li>
-          <li class="nav-item">
+                <li class="nav-item @openArrow">
             <a href="#" class="nav-link @cmsListItem">
               <i class="nav-icon fas fa-book"></i>
               <p>
@@ -132,7 +138,7 @@
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+                            <ul class="nav nav-treeview" style="@isCMS">
               <li class="nav-item">
                 <a asp-controller="Category" asp-action="Index" class="nav-link @categoryItem">
                   <i class="far fa-circle nav-icon"></i>
@@ -197,7 +203,6 @@
 <!-- AdminLTE App -->
 <script src="~/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="~/dist/js/demo.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <!-- Page specific script -->

@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using SunPerfume.Utility;
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,6 +23,7 @@
 
     <link href="~/plugins/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
     <link href="~/plugins/themify-icons/themify-icons.css" rel="stylesheet" />
+    @await RenderSectionAsync("StyleSheet", required: false);
 </head>
 <body>
 
@@ -80,10 +87,14 @@
 
                                         </ul>
                                     </li>
-
-                                    <li><a href="#">pages</a></li>
-                                    <li><a href="#">blog</a></li>
                                     <li><a href="#">contact</a></li>
+                                    <li><a asp-controller="Order" asp-action="Index">Your Order</a></li>
+                                    @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
+                                         {
+                                        <li >
+                                            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin</a>
+                                         </li>
+                                    }
                                 </ul>
                                 <partial name="_LoginPartial" />
                                 <div class="hamburger_container">
@@ -117,7 +128,13 @@
 
                     <li class="menu_item"><a href="#">Khuyến mãi</a></li>
                     <li class="menu_item"><a href="#">pages</a></li>
-                    <li class="menu_item"><a href="#">blog</a></li>          
+                    @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Employee))
+                    {
+                        <li class="menu_item">
+                            <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"></a>
+                         </li>
+                    }
+                    
                 </ul>
             </div>
         </div>
@@ -223,7 +240,6 @@
                         <div class="footer_nav_container d-flex flex-sm-row flex-column align-items-center justify-content-lg-start justify-content-center text-center">
                             <ul class="footer_nav">
                                 <li><a href="#">Blog</a></li>
-                                <li><a href="/Admin/SanPhams/Index">Admin</a></li>
                                 <li><a href="#">Contact us</a></li>
                             </ul>
                         </div>
