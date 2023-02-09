@@ -1,5 +1,5 @@
 ﻿@model Cart
-
+@using System.Globalization
 <link rel="stylesheet" type="text/css" href="~/css/productDetail.css" />
 <div class="container" style="margin-top: 130px;">
     <form method="post">
@@ -32,7 +32,12 @@
 									<a asp-action="Brand" asp-route-cateId="@Model.Product.BrandId">
 										@Model.Product.Brand.Name
 									</a>
-									</p>
+								</p>
+							</div>
+							<div class="product-info">
+								<p class="product-brand text-bold">
+									Price: @Model.Product.Price.ToString("c", CultureInfo.CreateSpecificCulture("vi-VN"))
+								</p>
 							</div>
 							<div class="product-count">
 								<label for="Count">Quantity</label>
