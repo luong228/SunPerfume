@@ -1,4 +1,36 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    var brandItem = "";
+    var categoryItem = "";
+    var productItem = "";
+    var companyItem = "";
+    var cmsListItem = "";
+    switch (@ViewContext.RouteData.Values["controller"])
+    {
+        case "Brand":
+            brandItem = "active";
+            cmsListItem = "active";
+            break;
+        case "Category":
+            categoryItem = "active";
+            cmsListItem = "active";
+            break;
+        case "Product":
+            productItem = "active";
+            cmsListItem = "active";
+            break;
+        case "Company":
+            companyItem = "active";
+            cmsListItem = "active";
+            break;
+
+    }
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -49,7 +81,7 @@
           <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">@UserManager.GetUserName(User)</a>
         </div>
       </div>
 
@@ -88,7 +120,7 @@
               </ul>
               </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link @cmsListItem">
               <i class="nav-icon fas fa-book"></i>
               <p>
                 CMS
@@ -97,24 +129,24 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a asp-controller="Category" asp-action="Index" class="nav-link">
+                <a asp-controller="Category" asp-action="Index" class="nav-link @categoryItem">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Category</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a asp-controller="Brand" asp-action="Index"  class="nav-link">
+                <a asp-controller="Brand" asp-action="Index" class="nav-link @brandItem">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Brand</p>
                 </a>
               </li>
                <li class="nav-item">
-                <a asp-controller="Product" asp-action="Index"  class="nav-link">
+                <a asp-controller="Product" asp-action="Index" class="nav-link @productItem">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Product</p>
                 </a>
               </li>  <li class="nav-item">
-                <a asp-controller="Company" asp-action="Index"  class="nav-link">
+                <a asp-controller="Company" asp-action="Index" class="nav-link @companyItem">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Company</p>
                 </a>
