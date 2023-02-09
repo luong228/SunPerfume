@@ -120,11 +120,12 @@ namespace SunPerfumeWeb.Areas.Customer.Controllers
                 //_unitOfWork.Save(); Redundant
             }
             _unitOfWork.Save();
+            var uri = new Uri($"{Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}");
             // If individual user
             if (applicationUser.CompanyId.GetValueOrDefault() == 0)
             {
                 //Stripe settings
-                var domain = "https://localhost:44342/";
+                var domain = "https://" + uri.Host + ":" + uri.Port;
                 var options = new SessionCreateOptions
                 {
                     PaymentMethodTypes = new List<string>
@@ -133,8 +134,8 @@ namespace SunPerfumeWeb.Areas.Customer.Controllers
                     },
                     LineItems = new List<SessionLineItemOptions>(),
                     Mode = "payment",
-                    SuccessUrl = domain + $"customer/cart/OrderConfirmation?id={CartVM.OrderHeader.Id}",
-                    CancelUrl = domain + "customer/cart/index",
+                    SuccessUrl = domain + $"/customer/cart/OrderConfirmation?id={CartVM.OrderHeader.Id}",
+                    CancelUrl = domain + "/customer/cart/index",
                 };
                 foreach (var item in CartVM.ListCart)
                 {
@@ -142,8 +143,8 @@ namespace SunPerfumeWeb.Areas.Customer.Controllers
                     {
                         PriceData = new SessionLineItemPriceDataOptions
                         {
-                            UnitAmount = (long)(item.Price) * 100, // 20.00 -> 2000
-                            Currency = "usd",
+                            UnitAmount = (long)(item.Price), // 20.00 -> 2000
+                            Currency = "vnd",
                             ProductData = new SessionLineItemPriceDataProductDataOptions
                             {
                                 Name = item.Product.Name,

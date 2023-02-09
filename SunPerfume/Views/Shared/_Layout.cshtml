@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -86,16 +85,7 @@
                                     <li><a href="#">blog</a></li>
                                     <li><a href="#">contact</a></li>
                                 </ul>
-                                <ul class="navbar_user">
-                                    <li>
-                                        <a id="search_1" href="javascript:void(0)"><i class="ti-search"></i></a>
-
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
-                                    <li class="checkout">
-                                        @await Component.InvokeAsync("Cart")
-                                    </li>
-                                </ul>
+                                <partial name="_LoginPartial" />
                                 <div class="hamburger_container">
                                     <i class="fa fa-bars" aria-hidden="true"></i>
                                 </div>
@@ -127,8 +117,7 @@
 
                     <li class="menu_item"><a href="#">Khuyến mãi</a></li>
                     <li class="menu_item"><a href="#">pages</a></li>
-                    <li class="menu_item"><a href="#">blog</a></li>
-                    <li class="menu_item"><a href="#">contact</a></li>
+                    <li class="menu_item"><a href="#">blog</a></li>          
                 </ul>
             </div>
         </div>

@@ -86,13 +86,13 @@ namespace SunPerfumeWeb.Areas.Customer.Controllers
             {
                 _unitOfWork.CartRepository.Add(cart);
                 _unitOfWork.Save();
+                HttpContext.Session.SetInt32(SD.SessionCart,
+    _unitOfWork.CartRepository.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
             }
             else
             {
                 _unitOfWork.CartRepository.IncrementCount(cartFromDb, cart.Count);
                 _unitOfWork.Save();
-                HttpContext.Session.SetInt32(SD.SessionCart,
-                    _unitOfWork.CartRepository.GetAll(u => u.ApplicationUserId == claim.Value).ToList().Count);
             }
             return RedirectToAction("Category", "Product");
         }
